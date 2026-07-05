@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>SILICON GYM | ENGINEERED FOR EXCELLENCE</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Outfit:wght@300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght=300;400;500;600;700&amp;family=Outfit:wght=300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght=100..900&amp;family=Space+Grotesk:wght=100..900&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -169,37 +168,36 @@
 </nav>
 <!-- Hero Section -->
 <section class="relative h-screen flex items-center justify-center overflow-hidden" id="home">
-<!-- STITCH_THREEJS_START:ANIMATION_1 class="absolute inset-0 w-full h-full z-0 opacity-60" -->
 <div class="absolute inset-0 w-full h-full z-0 opacity-60" style="display:block;">
 <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
 <div id="threejs-container-ANIMATION_1" style="width:100%;height:100%"></div>
 <script>
 (function() {
-  const container = document.getElementById('threejs-container-ANIMATION_1');
-  const devicePixelRatio = window.devicePixelRatio || 1;
+  container = document.getElementById('threejs-container-ANIMATION_1');
+  devicePixelRatio = window.devicePixelRatio || 1;
   
-const width = container.clientWidth || window.innerWidth;
-const height = container.clientHeight || window.innerHeight;
+width = container.clientWidth || window.innerWidth;
+height = container.clientHeight || window.innerHeight;
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+scene = new THREE.Scene();
+camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 camera.position.z = 5;
 
-const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 renderer.setSize(width, height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 container.appendChild(renderer.domElement);
 
 // Particles
-const particlesCount = 3000;
-const posArray = new Float32Array(particlesCount * 3);
+particlesCount = 3000;
+posArray = new Float32Array(particlesCount * 3);
 for(let i = 0; i < particlesCount * 3; i++) {
     posArray[i] = (Math.random() - 0.5) * 15;
 }
-const particlesGeometry = new THREE.BufferGeometry();
+particlesGeometry = new THREE.BufferGeometry();
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
-const particlesMaterial = new THREE.PointsMaterial({
+particlesMaterial = new THREE.PointsMaterial({
     size: 0.015,
     color: '#c5003c',
     transparent: true,
@@ -207,13 +205,13 @@ const particlesMaterial = new THREE.PointsMaterial({
     blending: THREE.AdditiveBlending
 });
 
-const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
 scene.add(particlesMesh);
 
 // Spheres
-const spheresGroup = new THREE.Group();
-const sphereGeometry = new THREE.SphereGeometry(0.1, 32, 32);
-const sphereMaterial = new THREE.MeshPhongMaterial({
+spheresGroup = new THREE.Group();
+sphereGeometry = new THREE.SphereGeometry(0.1, 32, 32);
+sphereMaterial = new THREE.MeshPhongMaterial({
     color: '#880425',
     shininess: 100,
     reflectivity: 1,
@@ -222,7 +220,7 @@ const sphereMaterial = new THREE.MeshPhongMaterial({
 });
 
 for(let i = 0; i < 20; i++) {
-    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
     sphere.position.set(
         (Math.random() - 0.5) * 10,
         (Math.random() - 0.5) * 10,
@@ -233,9 +231,9 @@ for(let i = 0; i < 20; i++) {
 scene.add(spheresGroup);
 
 // Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
-const pointLight = new THREE.PointLight('#f3e600', 2);
+pointLight = new THREE.PointLight('#f3e600', 2);
 pointLight.position.set(2, 3, 4);
 scene.add(pointLight);
 
@@ -247,18 +245,18 @@ document.addEventListener('mousemove', (event) => {
     mouseY = (event.clientY / window.innerHeight) - 0.5;
 });
 
-const animate = () => {
+animate = () => {
     requestAnimationFrame(animate);
     
     particlesMesh.rotation.y += 0.001;
     particlesMesh.rotation.x += 0.0005;
     
     // Wave animation logic
-    const positions = particlesGeometry.attributes.position.array;
-    const time = Date.now() * 0.0005;
+    positions = particlesGeometry.attributes.position.array;
+    time = Date.now() * 0.0005;
     for (let i = 0; i < particlesCount; i++) {
-        const x = positions[i * 3];
-        const z = positions[i * 3 + 2];
+        x = positions[i * 3];
+        z = positions[i * 3 + 2];
         positions[i * 3 + 1] = Math.sin(x + time) * 0.5 + Math.cos(z + time) * 0.5;
     }
     particlesGeometry.attributes.position.needsUpdate = true;
@@ -277,8 +275,8 @@ const animate = () => {
 animate();
 
 window.addEventListener('resize', () => {
-    const w = container.clientWidth || window.innerWidth;
-    const h = container.clientHeight || window.innerHeight;
+    w = container.clientWidth || window.innerWidth;
+    h = container.clientHeight || window.innerHeight;
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
@@ -287,7 +285,6 @@ window.addEventListener('resize', () => {
 })();
 </script>
 </div>
-<!-- STITCH_THREEJS_END:ANIMATION_1 -->
 <div class="relative z-10 text-center px-margin-mobile md:px-0">
 <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg uppercase text-white mb-4 tracking-tighter">
                 SILICON GYM
@@ -325,7 +322,7 @@ window.addEventListener('resize', () => {
 </div>
 <div class="relative fade-up">
 <div class="glass-panel p-4 rounded-xl rotate-3 hover:rotate-0 transition-transform duration-700">
-<div class="aspect-[4/5] bg-cover bg-center rounded-lg shadow-2xl" data-alt="A high-end, futuristic gym interior with neon red lighting accents, minimalist black carbon-fiber gym equipment, and glass walls overlooking a dark cityscape at night. The atmosphere is sophisticated and technological, featuring glowing data screens on machines. The lighting is low-key with intense red highlights on metallic surfaces." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKSaPzeVVOx9wFkK8bxiUIv5HmVLoGeCtn-0YK_baHZvXusr3o92ZuVXGua3TlMZkYveE7ZReeIrDrQjNzuIFUOQksUPjykDdBa1gUwOmaqOLSx2Ejt5PvhV1pHfyUujB0nSTWUc140Oc27zhyCkAbcBSBaTlsldMRFJPOd_0EnBdc9prakvJCA1klaHWBwX5uD4v4Enfx86Epy2KipMTe1bY1D1JRA9hh1HRJVJtPHDBPI-EcnDiO')"></div>
+<div class="aspect-[4/5] bg-cover bg-center rounded-lg shadow-2xl" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKSaPzeVVOx9wFkK8bxiUIv5HmVLoGeCtn-0YK_baHZvXusr3o92ZuVXGua3TlMZkYveE7ZReeIrDrQjNzuIFUOQksUPjykDdBa1gUwOmaqOLSx2Ejt5PvhV1pHfyUujB0nSTWUc140Oc27zhyCkAbcBSBaTlsldMRFJPOd_0EnBdc9prakvJCA1klaHWBwX5uD4v4Enfx86Epy2KipMTe1bY1D1JRA9hh1HRJVJtPHDBPI-EcnDiO')"></div>
 <div class="absolute -bottom-6 -left-6 bg-tertiary-container text-on-tertiary-container p-6 rounded-lg font-display-lg text-label-caps uppercase">
                         24/7 Access<br/>Elite Tech
                     </div>
@@ -342,7 +339,7 @@ window.addEventListener('resize', () => {
 </div>
 <!-- Form Card -->
 <div class="glass-panel data-corner relative p-8 md:p-12 rounded-xl fade-up">
-<form action="https://docs.google.com/forms/u/0/d/1Ba8FLfA5I0h6qtfvX_BgexDfHPIBpmCv1nVdyToKfwQ/formResponse" class="space-y-12" id="registrationForm" method="POST" target="_blank">
+<form action="https://script.google.com/macros/s/AKfycbwTXp7-aWuTaLFddtPL76_sqvzRpTRerqsLToeHd71qDBWI6cx-LmhpmpRQfa0YlZvO/exec" class="space-y-12" id="registrationForm" method="POST" target="_blank">
 <!-- Section 1: Personal Info -->
 <div class="space-y-8">
 <div class="flex items-center gap-3 border-l-4 border-primary pl-4">
@@ -352,15 +349,15 @@ window.addEventListener('resize', () => {
 <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
 <div class="space-y-2">
 <label class="font-label-caps text-on-surface-variant uppercase text-xs">Full Name</label>
-<input class="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:border-primary transition-all p-3 text-on-surface focus:ring-0" name="entry.123456789" placeholder="John Doe" required="" type="text"/>
+<input class="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:border-primary transition-all p-3 text-on-surface focus:ring-0" name="entry.374754270" placeholder="YOUR NAME" required="" type="text"/>
 </div>
 <div class="space-y-2">
 <label class="font-label-caps text-on-surface-variant uppercase text-xs">SIC Number</label>
-<input class="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:border-primary transition-all p-3 text-on-surface focus:ring-0" name="entry.987654321" placeholder="SIC-12345" required="" type="text"/>
+<input class="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:border-primary transition-all p-3 text-on-surface focus:ring-0" name="entry.1894580731" placeholder="YOUR SIC" required="" type="text"/>
 </div>
 <div class="space-y-2">
 <label class="font-label-caps text-on-surface-variant uppercase text-xs">Course</label>
-<select class="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:border-primary transition-all p-3 text-on-surface focus:ring-0" required="">
+<select class="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:border-primary transition-all p-3 text-on-surface focus:ring-0" name="entry.1967550226" required="">
 <option disabled="" selected="" value="">Select Course</option>
 <option value="B.Tech">B.Tech</option>
 <option value="MBA">MBA</option>
@@ -369,32 +366,33 @@ window.addEventListener('resize', () => {
 </div>
 <div class="space-y-2">
 <label class="font-label-caps text-on-surface-variant uppercase text-xs">Branch</label>
-<select class="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:border-primary transition-all p-3 text-on-surface focus:ring-0" required="">
+<select class="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:border-primary transition-all p-3 text-on-surface focus:ring-0" name="entry.148217808" required="">
 <option disabled="" selected="" value="">Select Branch</option>
 <option value="CSE">CSE</option>
 <option value="ECE">ECE</option>
 <option value="EEE">EEE</option>
 </select>
 </div>
+<!-- Added the Year Option Back Here -->
 <div class="space-y-2">
 <label class="font-label-caps text-on-surface-variant uppercase text-xs">Year</label>
-<select class="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:border-primary transition-all p-3 text-on-surface focus:ring-0" required="">
+<select class="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:border-primary transition-all p-3 text-on-surface focus:ring-0" name="entry.1312666232" required="">
 <option disabled="" selected="" value="">Select Year</option>
-<option value="1">1st Year</option>
-<option value="2">2nd Year</option>
-<option value="3">3rd Year</option>
-<option value="4">4th Year</option>
+<option value="1st Year">1st Year</option>
+<option value="2nd Year">2nd Year</option>
+<option value="3rd Year">3rd Year</option>
+<option value="4th Year">4th Year</option>
 </select>
 </div>
 <div class="space-y-2">
 <label class="font-label-caps text-on-surface-variant uppercase text-xs">Gender</label>
 <div class="flex gap-6 p-3">
 <label class="flex items-center gap-2 cursor-pointer">
-<input class="text-primary focus:ring-0 bg-transparent border-primary" name="gender" type="radio" value="Male"/>
+<input class="text-primary focus:ring-0 bg-transparent border-primary" name="entry.1858008117" type="radio" value="Male"/>
 <span class="font-body-md">Male</span>
 </label>
 <label class="flex items-center gap-2 cursor-pointer">
-<input class="text-primary focus:ring-0 bg-transparent border-primary" name="gender" type="radio" value="Female"/>
+<input class="text-primary focus:ring-0 bg-transparent border-primary" name="entry.1858008117" type="radio" value="Female"/>
 <span class="font-body-md">Female</span>
 </label>
 </div>
@@ -439,14 +437,14 @@ window.addEventListener('resize', () => {
 <label class="font-label-caps text-on-surface-variant uppercase text-xs">Height</label>
 <span class="font-stats-number text-primary text-xl"><span id="heightVal">170</span>cm</span>
 </div>
-<input class="accent-primary" id="heightSlider" max="250" min="100" type="range" value="170"/>
+<input class="accent-primary" id="heightSlider" name="entry.1423537159" max="250" min="100" type="range" value="170"/>
 </div>
 <div class="space-y-4">
 <div class="flex justify-between items-center">
 <label class="font-label-caps text-on-surface-variant uppercase text-xs">Weight</label>
 <span class="font-stats-number text-primary text-xl"><span id="weightVal">70</span>kg</span>
 </div>
-<input class="accent-primary" id="weightSlider" max="250" min="20" type="range" value="70"/>
+<input class="accent-primary" id="weightSlider" name="entry.373257491" max="250" min="20" type="range" value="70"/>
 </div>
 </div>
 </div>
@@ -459,11 +457,11 @@ window.addEventListener('resize', () => {
 </div>
 <div class="flex gap-6 p-3 glass-panel rounded-lg">
 <label class="flex items-center gap-2 cursor-pointer">
-<input class="text-primary focus:ring-0 bg-transparent border-primary" name="parentPermission" required="" type="radio" value="Yes"/>
+<input class="text-primary focus:ring-0 bg-transparent border-primary" name="entry.1691817220" required="" type="radio" value="Yes"/>
 <span class="font-body-md">Yes</span>
 </label>
 <label class="flex items-center gap-2 cursor-pointer">
-<input class="text-primary focus:ring-0 bg-transparent border-primary" name="parentPermission" type="radio" value="No"/>
+<input class="text-primary focus:ring-0 bg-transparent border-primary" name="entry.1691817220" type="radio" value="No"/>
 <span class="font-body-md">No</span>
 </label>
 </div>
@@ -478,7 +476,7 @@ window.addEventListener('resize', () => {
 <span class="text-xs text-on-surface-variant">YEARS</span>
 <span class="text-primary font-bold" id="expVal">0</span>
 </div>
-<input id="expSlider" max="20" min="0" type="range" value="0"/>
+<input id="expSlider" name="entry.1862695856" max="20" min="0" type="range" value="0"/>
 </div>
 </div>
 <div class="space-y-6">
@@ -488,11 +486,11 @@ window.addEventListener('resize', () => {
 </div>
 <div class="flex gap-6 p-3 glass-panel rounded-lg">
 <label class="flex items-center gap-2 cursor-pointer">
-<input class="text-primary focus:ring-0 bg-transparent border-primary" name="locker" type="radio" value="Yes"/>
+<input class="text-primary focus:ring-0 bg-transparent border-primary" name="entry.38638229" type="radio" value="Yes"/>
 <span class="font-body-md">Yes</span>
 </label>
 <label class="flex items-center gap-2 cursor-pointer">
-<input class="text-primary focus:ring-0 bg-transparent border-primary" name="locker" type="radio" value="No"/>
+<input class="text-primary focus:ring-0 bg-transparent border-primary" name="entry.38638229" type="radio" value="No"/>
 <span class="font-body-md">No</span>
 </label>
 </div>
@@ -515,7 +513,7 @@ window.addEventListener('resize', () => {
 </div>
 <h2 class="font-display-lg text-headline-xl uppercase text-white mb-4">Welcome to Elite</h2>
 <p class="font-body-md text-on-surface-variant mb-10">Your biometric profile has been verified and registered into the Silicon Gym ecosystem.</p>
-<button class="w-full py-4 glass-panel border-primary/40 hover:bg-primary-container transition-colors uppercase font-display-lg text-label-caps" onclick="closePopup()">Close Terminal</button>
+<button class="w-full py-4 glass-panel border-primary/40 hover:bg-primary-container transition-colors uppercase font-display-lg text-label-caps" onclick="document.getElementById('successPopup').classList.add('hidden')">Close Terminal</button>
 </div>
 </div>
 </div>
@@ -544,13 +542,16 @@ window.addEventListener('resize', () => {
 </div>
 </footer>
 <script>
+        // Global string to hold image base64 data
+        let base64ImageData = "";
+
         // Intersection Observer for fade-up
-        const observerOptions = {
+        observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -561,7 +562,7 @@ window.addEventListener('resize', () => {
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
         // Slider Value Displays
-        const heightSlider = document.getElementById('heightSlider');
+        heightSlider = document.getElementById('heightSlider');
         const heightVal = document.getElementById('heightVal');
         heightSlider.oninput = () => heightVal.textContent = heightSlider.value;
 
@@ -607,16 +608,12 @@ window.addEventListener('resize', () => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     previewImg.src = e.target.result;
+                    base64ImageData = e.target.result; // Stores base64 string including header data:image/...
                     uploadPreview.classList.remove('hidden');
                     uploadPlaceholder.classList.add('hidden');
                     simulateUpload();
                 };
                 reader.readAsDataURL(file);
-                
-                // Real AJAX would go here:
-                // const formData = new FormData();
-                // formData.append('file', file);
-                // fetch('APPS_SCRIPT_URL', { method: 'POST', body: formData })
             }
         }
 
@@ -636,20 +633,20 @@ window.addEventListener('resize', () => {
         clearBtn.onclick = (e) => {
             e.stopPropagation();
             previewImg.src = '';
+            base64ImageData = "";
             uploadPreview.classList.add('hidden');
             uploadPlaceholder.classList.remove('hidden');
             imageInput.value = '';
         };
 
-        // Form Validation & Success
+       // Form Validation & Success Handling
         const form = document.getElementById('registrationForm');
         const successPopup = document.getElementById('successPopup');
 
         form.onsubmit = (e) => {
-            e.preventDefault();
+            e.preventDefault(); 
             let hasError = false;
             
-            // Basic validation check
             const inputs = form.querySelectorAll('input[required], select[required]');
             inputs.forEach(input => {
                 if (!input.value) {
@@ -660,48 +657,42 @@ window.addEventListener('resize', () => {
             });
 
             if (!hasError) {
-                // Show success popup
                 successPopup.classList.remove('hidden');
                 setTimeout(() => successPopup.classList.add('opacity-100'), 10);
                 
-                // Fire Confetti (CSS/JS Micro-interaction)
-                createConfetti();
+                // Package data explicitly into standard search params
+                const formData = new FormData(form);
+                const searchParams = new URLSearchParams();
                 
-                // Form submission logic would happen here or via target blank
-                // form.submit(); 
+                for (const pair of formData.entries()) {
+                    searchParams.append(pair[0], pair[1]);
+                }
+                
+                // Crucial component injection: Adds image base64 data to parameters payload
+                if(base64ImageData) {
+                    searchParams.append('entry.image', base64ImageData);
+                } else {
+                    searchParams.append('entry.image', '');
+                }
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: searchParams,
+                    mode: 'no-cors', 
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                .then(() => {
+                    console.log('Successfully sent textual form parameters and image base64 data to Apps Script!');
+                    form.reset(); 
+                    base64ImageData = "";
+                    uploadPreview.classList.add('hidden');
+                    uploadPlaceholder.classList.remove('hidden');
+                })
+                .catch(error => console.error('Submission Blocked:', error));
             }
         };
-
-        function closePopup() {
-            successPopup.classList.remove('opacity-100');
-            setTimeout(() => successPopup.classList.add('hidden'), 500);
-        }
-
-        function createConfetti() {
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'fixed w-2 h-2 pointer-events-none z-[110]';
-                confetti.style.backgroundColor = ['#ffb2b7', '#c5003c', '#d6ca00'][Math.floor(Math.random() * 3)];
-                confetti.style.left = '50%';
-                confetti.style.top = '50%';
-                document.body.appendChild(confetti);
-                
-                const angle = Math.random() * Math.PI * 2;
-                const distance = Math.random() * 300 + 100;
-                const destinationX = Math.cos(angle) * distance;
-                const destinationY = Math.sin(angle) * distance;
-
-                const animation = confetti.animate([
-                    { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
-                    { transform: `translate(${destinationX}px, ${destinationY}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
-                ], {
-                    duration: 1000 + Math.random() * 1000,
-                    easing: 'cubic-bezier(0, .9, .57, 1)'
-                });
-
-                animation.onfinish = () => confetti.remove();
-            }
-        }
 
         // Mouse Parallax for Hero
         window.addEventListener('mousemove', (e) => {
